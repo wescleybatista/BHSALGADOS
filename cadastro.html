@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Clientes - BH SALGADOS</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #C01E1A; /* Vermelho Principal no fundo da tela */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .home {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Botão Página Principal no topo */
+        #home {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            background-color: #F3A522; /* Amarelo Ouro para ação de retorno */
+            font-size: 0.95em;
+            font-weight: bold;
+            color: #541108; /* Texto em Marrom Escuro */
+            box-shadow: 0 4px 10px rgba(84, 17, 8, 0.2);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #home:hover {
+            background-color: #541108; /* Inverte para Marrom Escuro no hover */
+            color: #FCD667; /* Texto Amarelo Claro */
+        }
+
+        /* Card do Formulário */
+        .principal {
+            padding: 30px 25px;
+            text-align: center;
+            background-color: #FCD667; /* Fundo em Amarelo Claro */
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(84, 17, 8, 0.3);
+            border: 2px solid #F3A522; /* Borda sutil em Amarelo Ouro */
+        }
+
+         img {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 20px;
+            display: block;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        h2 {
+            font-size: 26px;
+            color: #C01E1A; /* Título em Vermelho Principal */
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            font-size: 16px;
+            color: #541108; /* Labels em Marrom Escuro para máxima leitura */
+            margin-bottom: 6px;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+
+        /* Padronização de todos os inputs (Texto, Data e Password) */
+        input[type="text"],
+        input[type="date"],
+        input[type="password"] {
+            width: 100%;
+            padding: 14px 20px;
+            margin-bottom: 20px;
+            border-radius: 25px;
+            border: 1px solid #F3A522;
+            background-color: #ffffff;
+            font-size: 1em;
+            color: #541108;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus {
+            border: 2px solid #C01E1A; /* Borda destaca em vermelho ao focar */
+        }
+
+        /* Estilização corrigida para o campo de data ocupar a largura correta de forma arredondada */
+        #dataNascimento {
+            height: auto; 
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Botão Cadastrar */
+        input[type="button"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #C01E1A; /* Botão em Vermelho Principal */
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(192, 30, 26, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        input[type="button"]:hover {
+            background-color: #541108; /* Altera para Marrom Escuro no hover */
+            color: #FCD667; /* Texto Amarelo Claro */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="home">
+        <!-- Botão de navegação superior para a página principal -->
+        <a href="principal.html" id="home">PÁGINA PRINCIPAL</a>
+
+        <div class="principal">
+            <img src="IMAGEM BH SALGADOS.jpg" alt="Logo BH Salgados">
+            <h2>Clientes</h2>
+            
+            <form>
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" placeholder="Ex: João Silva">
+                
+                <label for="dataNascimento">Data de Nascimento:</label>
+                <input type="date" id="dataNascimento" name="dataNascimento">
+                
+                <label for="email">Email/Telefone:</label>
+                <input type="text" id="email" name="email" placeholder="Ex: João@gmail.com" required>
+
+                <label for="usuario">Nome de Usuário:</label>
+                <input type="text" id="usuario" name="usuario" placeholder="Ex: João" required>
+
+                <label for="senha">Senha:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <input type="button" value="CADASTRAR" onclick="cadastrar()">
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts de funcionamento e máscaras mantidos originais -->
+    <script>
+        function cadastrar() {
+            alert("Cadastrado com Sucesso!!!");
+            window.location.href = "principal.html";
+        }
+    </script>
+
+    <script src="https://unpkg.com/imask"></script>
+    <script>
+        IMask(document.getElementById('cpf'), { mask: '000.000.000-00' });
+    </script>
+</body>
+
+</html>

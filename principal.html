@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal - BH SALGADOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #FCD667; /* Amarelo Claro Oficial */
+            color: #541108; /* Marrom Escuro para melhor leitura */
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .topo {
+            box-shadow: 0 4px 10px rgba(84, 17, 8, 0.15);
+        }
+
+        img {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 20px;
+            display: block;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .banner {
+            /* Gradiente usando o Vermelho Principal e o Amarelo Ouro */
+            background: linear-gradient(135deg, #C01E1A, #F3A522);
+            color: #fff;
+            text-align: center;
+            padding: 50px 20px;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .banner h1 {
+            font-size: 2.7rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(84, 17, 8, 0.5); /* Sombra marrom para destacar */
+        }
+
+        .banner p {
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            opacity: 0.95;
+            color: #FFF;
+        }
+
+        .menu {
+            background-color: #ffffff;
+            border-bottom: 3px solid #C01E1A; /* Linha divisória em Vermelho */
+        }
+
+        .menu ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .menu li {
+            margin: 0;
+        }
+
+        .menu a {
+            display: block;
+            padding: 18px 22px;
+            text-decoration: none;
+            color: #C01E1A; /* Links em Vermelho Principal */
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .menu a:hover {
+            background-color: #C01E1A; /* Fundo Vermelho no Hover */
+            color: #FCD667; /* Texto Amarelo Claro no Hover */
+        }
+
+        .conteudo {
+            padding: 40px 0;
+        }
+
+        .destaque {
+            background-color: #fff;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 14px rgba(84, 17, 8, 0.1);
+            text-align: center;
+            border: 1px solid rgba(243, 165, 34, 0.3); /* Borda suave em Amarelo Ouro */
+        }
+
+        .destaque h2 {
+            font-size: 2rem;
+            color: #C01E1A; /* Título em Vermelho Principal */
+            margin-bottom: 15px;
+        }
+
+        .destaque p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 25px;
+            color: #541108;
+        }
+
+        .botao {
+            display: inline-block;
+            background-color: #C01E1A; /* Botão em Vermelho Principal */
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(192, 30, 26, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .botao:hover {
+            background-color: #A01613; /* Vermelho um pouco mais escuro ao passar o mouse */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(192, 30, 26, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topo">
+        <div class="container">
+            <div class="banner">
+                <img src="IMAGEM BH SALGADOS.jpg" alt="Logo BH Salgados">
+    
+                <p>SABOR & TRADIÇÃO</p>
+                <h1>BH SALGADOS</h1>
+            </div>
+        </div>
+        <nav class="menu">
+            <div class="container">
+                <ul>
+                    <li><a href="login.html">login</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="dicasInformações.html">Dicas e Informações</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="conteudo">
+        <div class="container">
+            <section class="destaque">
+                <h2>Seja bem-vindo</h2>
+                <p>
+                    Descubra o verdadeiro sabor da tradição! Preparados com ingredientes selecionados e muito carinho, nossos salgados são perfeitos para qualquer momento do seu dia ou para o seu evento.
+                </p>
+                <a href="contatos.html" class="botao">Ver Mais</a>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dicas de Preparo e Conservação - BH SALGADOS</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #C01E1A; /* Vermelho Principal no fundo da tela */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container-principal {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Botão Página Principal estilizado */
+        #btn-home {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            background-color: #F3A522; /* Amarelo Ouro */
+            font-size: 0.95em;
+            font-weight: bold;
+            color: #541108; /* Texto em Marrom Escuro */
+            box-shadow: 0 4px 10px rgba(84, 17, 8, 0.2);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #btn-home:hover {
+            background-color: #541108;
+            color: #FCD667;
+        }
+
+        /* Card do Conteúdo */
+        .conteudo {
+            padding: 35px 25px;
+            text-align: center;
+            background-color: #FCD667; /* Fundo em Amarelo Claro */
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(84, 17, 8, 0.3);
+            border: 2px solid #F3A522;
+        }
+
+        /* Logo do topo */
+        .logo-topo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+            display: block;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        h2 {
+            font-size: 26px;
+            color: #C01E1A; /* Vermelho Principal */
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Estrutura das duas colunas de guias */
+        .grid-dicas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            text-align: left;
+        }
+
+        /* Colunas de Dicas */
+        .coluna-dica {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #F3A522;
+            box-shadow: 0 4px 12px rgba(84, 17, 8, 0.05);
+        }
+
+        .coluna-dica h3 {
+            font-size: 18px;
+            color: #C01E1A;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #F3A522;
+            padding-bottom: 5px;
+        }
+
+        /* Imagens explicativas */
+        .imagem-dica {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Estilização da lista de informações */
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            font-size: 14px;
+            color: #541108; /* Marrom Escuro */
+            margin-bottom: 12px;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        /* Marcador de lista customizado em formato de bolinha Amarelo Ouro */
+        li::before {
+            content: "●";
+            color: #F3A522;
+            font-weight: bold;
+            display: inline-block;
+            width: 20px;
+            margin-left: -20px;
+            position: absolute;
+            left: 5px;
+        }
+
+        strong {
+            color: #C01E1A;
+        }
+
+        /* Responsividade para celulares */
+        @media (max-width: 768px) {
+            .grid-dicas {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-principal">
+        <a href="principal.html" id="btn-home">PÁGINA PRINCIPAL</a>
+
+        <div class="conteudo">
+            <img src="IMAGEM BH SALGADOS.jpg" alt="Logo BH Salgados" class="logo-topo">
+            <h2>Guia Prático do Cliente</h2>
+            
+            <div class="grid-dicas">
+                
+                <div class="coluna-dica">
+                    <h3>Como Fritar Perfeitamente</h3>
+                    <img src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=600&auto=format&fit=crop" alt="Fritura de salgados" class="imagem-dica">
+                    
+                    <ul>
+                        <li><strong>Temperatura do óleo:</strong> O óleo deve estar bem quente (cerca de 180°C). Se estiver frio, o salgado encharca; se estiver muito quente, queima por fora e fica congelado por dentro.</li>
+                        <li><strong>Quantidade ideal:</strong> Não coloque muitos salgados de uma vez na panela. Isso abaixa a temperatura do óleo e pode fazer os salgados estourarem.</li>
+                        <li><strong>Salgados congelados:</strong> Retire do congelador cerca de 10 a 15 minutos antes de fritar para tirar o excesso de gelo superficial. Não deixe descongelar totalmente.</li>
+                        <li><strong>Imersão total:</strong> O óleo deve cobrir totalmente os salgados para que fritem de forma uniforme sem a necessidade de ficar mexendo a todo momento.</li>
+                        <li><strong>Pós-fritura:</strong> Retire com uma escumadeira e deixe escorrer bem em um recipiente com papel toalha antes de servir.</li>
+                    </ul>
+                </div>
+
+                <div class="coluna-dica">
+                    <h3>Como Conservar os Salgados</h3>
+                    <img src="https://images.unsplash.com/photo-1588854337236-6889d631faa8?q=80&w=600&auto=format&fit=crop" alt="Conservação e congelados" class="imagem-dica">
+                    
+                    <ul>
+                        <li><strong>Tempo no Congelador:</strong> Nossos salgados congelados podem ser mantidos no freezer a -18°C por até <strong>3 meses</strong> a partir da data de fabricação.</li>
+                        <li><strong>Embalagem correta:</strong> Mantenha os salgados sempre bem lacrados em sacos plásticos próprios para alimentos ou potes bem fechados para evitar que acumulem cristais de gelo.</li>
+                        <li><strong>Evite o descongelamento:</strong> Nunca recongele um salgado que já foi descongelado anteriormente. Isso altera a textura da massa e compromete a segurança do alimento.</li>
+                        <li><strong>Salgados já fritos:</strong> Se sobrarem salgados já fritos, conserve-os na geladeira por no máximo 2 dias. Para reaquecer, utilize o forno convencional ou airfryer para devolver a crocância. Evite o micro-ondas.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

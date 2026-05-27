@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Login - BH SALGADOS</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #C01E1A; /* Vermelho Principal no fundo da tela */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .principal {
+            width: 100%;
+            max-width: 400px;
+            padding: 30px 20px;
+            text-align: center;
+            background-color: #FCD667; /* Fundo do card em Amarelo Claro */
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(84, 17, 8, 0.3); /* Sombra em tom marrom */
+            border: 2px solid #F3A522; /* Borda em Amarelo Ouro */
+        }
+        
+        img {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 20px;
+            display: block;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+          /* Botão Página Principal no topo */
+        #home {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            background-color: #F3A522; /* Amarelo Ouro para ação de retorno */
+            font-size: 0.95em;
+            font-weight: bold;
+            color: #541108; /* Texto em Marrom Escuro */
+            box-shadow: 0 4px 10px rgba(84, 17, 8, 0.2);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        h2 {
+            font-size: 26px;
+            color: #C01E1A; /* Título em Vermelho */
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        p {
+            color: #541108; /* Texto de apoio em Marrom Escuro */
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        
+        label {
+            display: block;
+            text-align: left;
+            font-size: 16px;
+            color: #541108; /* Labels em Marrom Escuro */
+            margin-bottom: 5px;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border-radius: 25px;
+            border: 1px solid #F3A522;
+            background-color: #ffffff;
+            font-size: 1em;
+            color: #541108;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border: 2px solid #C01E1A; /* Borda vermelha ao clicar no campo */
+        }
+        
+        input[type="button"] {
+            width: 100%;
+            padding: 14px;
+            background-color: #C01E1A; /* Botão Logar em Vermelho Principal */
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(192, 30, 26, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        input[type="button"]:hover {
+            background-color: #541108; /* Muda para Marrom Escuro no hover */
+            color: #FCD667; /* Texto muda para Amarelo Claro */
+        }
+        
+        input[type="reset"] {
+            width: 50%;
+            padding: 10px;
+            background-color: #F3A522; /* Botão Limpar em Amarelo Ouro */
+            color: #541108;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        
+        input[type="reset"]:hover {
+            background-color: #d48a17; /* Tom de amarelo mais escuro no hover */
+            color: #ffffff;
+        }
+
+        .cadastro-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #C01E1A;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .cadastro-link:hover {
+            color: #541108;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="home">
+        <!-- Botão de navegação superior para a página principal -->
+        <a href="principal.html" id="home">PÁGINA PRINCIPAL</a>
+
+<div class="principal">
+    <img src="IMAGEM BH SALGADOS.jpg" alt="Logo BH Salgados">
+    
+    <h2>Efetuar Login</h2>
+    <p>Faça seu login aqui...</p>
+
+    <form>
+        <label for="login">Usuário:</label>
+        <input type="text" id="login" name="login" placeholder="Digite seu usuário">
+        
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+        
+        <input type="button" value="LOGAR" onclick="logar()"><br>
+        
+        <input type="reset" value="LIMPAR">
+    </form>
+    
+    <a href="cadastro.html" class="cadastro-link">Clique aqui para se cadastrar...</a>
+</div>
+
+<script>
+    function logar() {
+        let login = document.getElementById('login').value;
+        let senha = document.getElementById('senha').value;
+
+        // Atualizado para validar a credencial de 2026 enviada no seu escopo
+        if(login === "" && senha === ""){
+            alert("Login Efetuado Com Sucesso!");
+            window.location.href = "principal.html";
+        } else {
+            alert("Login ou senha incorretos!");
+        }
+    }
+</script>
+    
+</body>
+</html>

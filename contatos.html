@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatos - BH SALGADOS</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #C01E1A; /* Vermelho Principal no fundo da tela */
+            color: #541108; /* Marrom Escuro para textos */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .principal {
+            width: 100%;
+            max-width: 900px;
+            padding: 30px 20px;
+            text-align: center;
+            background-color: #FCD667; /* Fundo do card em Amarelo Claro */
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(84, 17, 8, 0.3);
+            border: 2px solid #F3A522; /* Borda em Amarelo Ouro */
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #C01E1A; /* Título principal em Vermelho */
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .link-container {
+            margin-bottom: 30px;
+        }
+
+        /* Botão Página Principal estilizado */
+        a {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            background-color: #F3A522; /* Amarelo Ouro */
+            font-size: 1em;
+            font-weight: bold;
+            color: #541108; /* Letras em Marrom Escuro */
+            box-shadow: 0 4px 10px rgba(84, 17, 8, 0.15);
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        a:hover {
+            background-color: #541108; /* Inverte para Marrom Escuro no hover */
+            color: #FCD667; /* Letras Amarelo Claro */
+            transform: translateY(-2px);
+        }
+
+        /* Container para os Iframes ficarem organizados e responsivos */
+        .midia-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 800px;
+            border: 3px solid #F3A522; /* Moldura estilizada em Amarelo Ouro nos iframes */
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(84, 17, 8, 0.1);
+        }
+
+        /* Ajuste de altura responsivo para telas menores */
+        .mapa-iframe {
+            height: 400px;
+        }
+
+        .video-iframe {
+            height: 450px;
+        }
+
+        @media (max-width: 600px) {
+            .mapa-iframe { height: 250px; }
+            .video-iframe { height: 250px; }
+            h2 { font-size: 22px; }
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="cadastrousuario.jpg">
+</head>
+
+<body>
+
+    <div class="principal">
+        <h2></h2>
+        
+        <div class="link-container">
+            <a href="Principal.html">PÁGINA PRINCIPAL</a>
+        </div>
+
+        <div class="midia-container">
+            <iframe
+                class="mapa-iframe"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4463.257675860609!2d-43.3695!3d-22.807!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x996461be567a9f%3A0x2c1de652e585da85!2sR.%20Maria%20Joaquina%2C%20279%20-%20Pavuna%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2021520-280!5e1!3m2!1spt-BR!2sbr" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+
+            <iframe 
+                class="video-iframe"
+                src="https://www.youtube.com/embed/1J1oKFmKCZQ"
+                title="Espaços de fabricação digital: Inovação e tecnologia no Rio de Janeiro | Aquário Casa Firjan"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+            </iframe>
+       <h2>Conecte-se comigo:</h2>
+    <a href="https://www.instagram.com/seu_usuario" target="_blank" rel="noopener noreferrer">@seu_usuario</a></p>
+    <a href="https://www.instagram.com/seu_usuario" target="_blank" rel="noopener noreferrer">@seu_usuario</a></p>
+        </div>
+    </div>
+
+</body>
+
+</html>

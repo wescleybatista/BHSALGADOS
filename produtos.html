@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produtos - BH SALGADOS</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #C01E1A; /* Vermelho Principal no fundo da tela */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .home {
+            width: 100%;
+            max-width: 900px; /* Aumentado para acomodar duas colunas confortavelmente */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Botão Página Principal estilizado */
+        #home {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            background-color: #F3A522; /* Amarelo Ouro para ação de retorno */
+            font-size: 0.95em;
+            font-weight: bold;
+            color: #541108; /* Texto em Marrom Escuro */
+            box-shadow: 0 4px 10px rgba(84, 17, 8, 0.2);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #home:hover {
+            background-color: #541108; /* Inverte para Marrom Escuro no hover */
+            color: #FCD667; /* Texto Amarelo Claro */
+        }
+
+        /* Card do Formulário Principal */
+        .principal {
+            padding: 30px 25px;
+            text-align: center;
+            background-color: #FCD667; /* Fundo em Amarelo Claro */
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(84, 17, 8, 0.3);
+            border: 2px solid #F3A522; /* Borda sutil em Amarelo Ouro */
+        }
+
+        img {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 20px;
+            display: block;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #C01E1A; /* Título em Vermelho Principal */
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* DIVISÃO EM DUAS GRADES LADO A LADO */
+        .formulario {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Divide em duas colunas iguais */
+            gap: 20px; /* Espaço entre as duas colunas */
+            text-align: left;
+        }
+
+        .grad1, .grad2 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            font-size: 14px;
+            color: #541108; /* Labels em Marrom Escuro para melhor leitura */
+            margin-bottom: 6px;
+            margin-left: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Padronização de Inputs, Selects e Caixas de Texto */
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 12px 20px;
+            margin-bottom: 15px;
+            border-radius: 25px;
+            border: 1px solid #F3A522;
+            background-color: #ffffff;
+            font-size: 0.95em;
+            color: #541108;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            border: 2px solid #C01E1A; /* Destaca a borda em vermelho ao focar */
+        }
+
+        /* Campo de valor total cinza para indicar que é calculado automaticamente */
+        #valortotal {
+            background-color: #f0f0f0;
+            font-weight: bold;
+            color: #C01E1A;
+        }
+
+        /* Botões de Ação (Confirmar e Salvar) */
+        input[type="button"] {
+            width: 100%;
+            padding: 14px;
+            background-color: #C01E1A; /* Botão em Vermelho Principal */
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(192, 30, 26, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
+            text-transform: uppercase;
+        }
+
+        /* O botão de Salvar ganha a cor Marrom Escuro para diferenciar */
+        #salvar {
+            background-color: #541108;
+            margin-bottom: 0;
+            box-shadow: 0 4px 10px rgba(84, 17, 8, 0.2);
+        }
+
+        input[type="button"]:hover {
+            background-color: #F3A522; /* Altera para Amarelo Ouro no hover */
+            color: #541108;
+            transform: translateY(-1px);
+        }
+        
+        #salvar:hover {
+            background-color: #C01E1A;
+            color: #ffffff;
+        }
+
+        /* Responsividade para telas de celulares: vira uma coluna só */
+        @media (max-width: 768px) {
+            .formulario {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="estilos/style.css">
+    <script src="scripts/script.js"></script>
+</head>
+
+<body>
+
+    <div class="home">
+        <!-- Link de navegação superior para voltar -->
+        <a href="principal.html" id="home">PÁGINA PRINCIPAL</a>
+
+        <div class="principal">
+            <img src="IMAGEM BH SALGADOS.jpg" alt="Logo BH Salgados">
+            <h2>PRODUTOS</h2>
+            
+            <form class="formulario">
+                <!-- COLUNA 1 (Esquerda) -->
+                <div class="grad1">
+                    <label for="salgados">SALGADOS DE FESTA:</label>
+                    <select id="salgados" required>
+                        <option value="0">Selecione</option>
+                        <option value="20.00">Salgados De Festa - 25 unidades FRITO</option>
+                        <option value="18.00">Salgados De Festa - 25 unidades CONGELADO</option>
+                        <option value="80.00">Cento FRITO - 100 salgados</option>
+                        <option value="70.00">Cento CONGELADO - 100 salgados</option>
+                        <option value="35.00">Bolinho De Bacalhau FRITO - 500g</option>
+                        <option value="30.00">Bolinho De Bacalhau CONGELADO - 500g</option>
+                        <option value="55.00">Bolinho De Costela FRITO - 1kg</option>
+                        <option value="50.00">Bolinho De Costela CONGELADO - 1kg</option>
+                        <option value="48.00">Bolinho De Feijoada FRITO - 900g</option>
+                        <option value="42.00">Bolinho De Feijoada CONGELADO - 900g</option>
+                        <option value="75.00">Camarão Empanado FRITO - 1kg</option>
+                        <option value="68.00">Camarão Empanado CONGELADO - 1kg</option>
+                        <option value="60.00">Salmão Com Cream Cheese FRITO - 700g </option>
+                        <option value="54.00">Salmão Com Cream Cheese CONGELADO - 700g </option>
+                        <option value="28.00">Pão De Queijo CONGELADO - 1kg</option>
+                        <option value="22.00">Nhoque CONGELADO - 1kg</option>
+                    </select>
+                    
+                    <label for="assados">ASSADOS:</label>
+                    <select id="assados" required>
+                        <option value="0">Selecione</option>
+                        <option value="25.00">Mini Pizza - 25 unidades</option>
+                        <option value="22.00">Mini Assadinho - 20 unidades</option>
+                        <option value="24.00">Mini Empada - 20 unidades</option>
+                    </select>
+
+                    <label for="doces">DOCES:</label>
+                    <select id="doces" required>
+                        <option value="0">Selecione</option>
+                        <option value="26.00">Quiches Doces - 20 unidades</option>
+                        <option value="25.00">Mini Folhado doces - 20 unidades</option>
+                        <option value="22.00">Mini Churros FRITOS - 25 unidades</option>
+                        <option value="19.50">Mini Churros CONGELADOS - 25 unidades</option>
+                    </select>
+
+                    <label for="biscoito">BISCOITO:</label>
+                    <select id="biscoito" required>
+                        <option value="0">Selecione</option>
+                        <option value="8.50">Torradinha Com Queijo - 100g</option>
+                    </select>
+                    
+                    <label for="azeites">Azeites:</label>
+                    <select id="azeites" required>
+                        <option value="0">Selecione</option>
+                        <option value="22.00">Miranda Extra Virgem</option>
+                        <option value="19.00">Do Chef Blend Premium</option>
+                    </select>
+                </div>
+
+                <!-- COLUNA 2 (Direita) -->
+                <div class="grad2">
+                    <label for="mel">MEL:</label>
+                    <select id="mel" required>
+                        <option value="0">Selecione</option>
+                        <option value="32.00">Mel Serra D'Ouro Florada Natural - 700g</option>
+                        <option value="15.00">Doce Com Mel D'Serra Gerais</option>
+                    </select>
+
+                    <label for="promocoes">PROMOÇÕES:</label>
+                    <select id="promocoes" required>
+                        <option value="0">Selecione</option>
+                        <option value="165.00">200 Salgados + 2 Refri 2L</option>
+                        <option value="85.00">100 Salgados + 1 Refri 2L</option>
+                        <option value="68.00">75 Salgados + 1 Refri 2L</option>
+                        <option value="48.00">50 Salgados + 1 Refri 2L</option>
+                        <option value="99.00">100 Salgados + 1 Refri 2L + 25 Mini Churros</option>
+                    </select>
+
+                    <label for="outros">OUTROS:</label>
+                    <select id="outros" required>
+                        <option value="0">Selecione</option>
+                        <option value="29.00">Palmito Pupunha Savana - Extra Macio</option>
+                        <option value="34.00">Requeijão Em Barra - Peça</option>
+                    </select>
+                           
+                    <label for="quantidade">QUANTIDADE:</label>
+                    <input type="text" id="quantidade" name="quantidade" placeholder="Ex.: 1...2...3...">
+                    
+                    <!-- Botão de calcular valor total -->
+                    <input type="button" value="CONFIRMAR VALOR" onclick="confirmar()">
+                    
+                    <label for="valortotal">VALOR TOTAL R$:</label>
+                    <input type="text" id="valortotal" name="valortotal" readonly placeholder="Calculado automaticamente">
+                    
+                    <!-- Botão de salvar no sistema -->
+                    <input type="button" value="SALVAR PRODUTO" id="salvar" onclick="SALVAR()">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Funções JavaScript Corrigidas -->
+    <script>
+        function confirmar() {
+            let quantidade = Number(document.getElementById('quantidade').value);
+            if(quantidade <= 0) quantidade = 1; // Evita multiplicar por zero se esquecerem de preencher
+
+            // Descobre qual categoria foi selecionada e pega o valor dela
+            let vSalgados = Number(document.getElementById('salgados').value) || 0;
+            let vAssados = Number(document.getElementById('assados').value) || 0;
+            let vDoces = Number(document.getElementById('doces').value) || 0;
+            let vBiscoito = Number(document.getElementById('biscoito').value) || 0;
+            let vAzeites = Number(document.getElementById('azeites').value) || 0;
+            let vMel = Number(document.getElementById('mel').value) || 0;
+            let vPromocoes = Number(document.getElementById('promocoes').value) || 0;
+            let vOutros = Number(document.getElementById('outros').value) || 0;
+
+            // Soma o item escolhido ativo
+            let valorUnitario = vSalgados + vAssados + vDoces + vBiscoito + vAzeites + vMel + vPromocoes + vOutros;
+            let total = quantidade * valorUnitario;
+            
+            document.getElementById('valortotal').value = total.toFixed(2);
+        }
+
+        function SALVAR() {
+            alert("Produto Cadastrado com Sucesso!");
+            
+            // Limpa todos os campos adequadamente usando os IDs corrigidos
+            document.getElementById('salgados').value = "0";
+            document.getElementById('assados').value = "0";
+            document.getElementById('doces').value = "0";
+            document.getElementById('biscoito').value = "0";
+            document.getElementById('azeites').value = "0";
+            document.getElementById('mel').value = "0";
+            document.getElementById('promocoes').value = "0";
+            document.getElementById('outros').value = "0";
+            document.getElementById('quantidade').value = "";
+            document.getElementById('valortotal').value = "";
+        }
+    </script>
+</body>
+
+</html>
