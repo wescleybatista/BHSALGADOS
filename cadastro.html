@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -5,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Clientes - BH SALGADOS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         * {
             box-sizing: border-box;
@@ -24,7 +26,7 @@
 
         .home {
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
             display: flex;
             flex-direction: column;
         }
@@ -77,23 +79,37 @@
             letter-spacing: 1px;
         }
 
+        /* CONTAINER GRID: Divide os campos em 2 colunas iguais */
+        .grid-formulario {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .grupo-campo {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
         label {
             display: block;
             text-align: left;
             font-size: 16px;
-            color: #541108; /* Labels em Marrom Escuro para máxima leitura */
+            color: #541108;
             margin-bottom: 6px;
             margin-left: 15px;
             font-weight: bold;
         }
 
-        /* Padronização de todos os inputs (Texto, Data e Password) */
+        /* Padronização de todos os inputs */
         input[type="text"],
+        input[type="email"],
         input[type="date"],
         input[type="password"] {
             width: 100%;
             padding: 14px 20px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             border-radius: 25px;
             border: 1px solid #F3A522;
             background-color: #ffffff;
@@ -104,80 +120,198 @@
         }
 
         input[type="text"]:focus,
-        input[type="date"]:focus {
-            border: 2px solid #C01E1A; /* Borda destaca em vermelho ao focar */
+        input[type="email"]:focus,
+        input[type="date"]:focus,
+        input[type="password"]:focus {
+            border: 2px solid #C01E1A;
         }
 
-        /* Estilização corrigida para o campo de data ocupar a largura correta de forma arredondada */
+        /* CONTAINER DA SENHA PARA POSICIONAR O OLHO */
+        .campo-senha {
+            position: relative;
+            width: 100%;
+        }
+
+        .campo-senha input {
+            padding-right: 50px !important;
+        }
+
+        /* Estilização e posicionamento do ícone do olho */
+        .olho-icone {
+            position: absolute;
+            right: 20px;
+            top: 24px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #541108;
+            font-size: 1.1em;
+            transition: color 0.2s;
+        }
+
+        .olho-icone:hover {
+            color: #C01E1A;
+        }
+
         #dataNascimento {
             height: auto; 
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        /* Botão Cadastrar */
-        input[type="button"] {
+        /* CONTAINER DOS BOTÕES PARA ALINHAMENTO VERTICAL */
+        .area-botoes {
+            grid-column: span 2; /* Ocupa as duas colunas do grid */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centraliza os botões */
             width: 100%;
-            padding: 15px;
-            background-color: #C01E1A; /* Botão em Vermelho Principal */
-            color: #ffffff;
+        }
+
+        /* Estilo base dos botões */
+        input[type="button"],
+        input[type="reset"] {
             border: none;
             border-radius: 25px;
             font-size: 1.1em;
             font-weight: bold;
             cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Botão Cadastrar (Largura total, cor vermelha) */
+        input[type="button"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #C01E1A; 
+            color: #ffffff;
             margin-top: 10px;
             box-shadow: 0 4px 10px rgba(192, 30, 26, 0.2);
-            transition: background-color 0.3s, transform 0.2s;
         }
 
         input[type="button"]:hover {
-            background-color: #541108; /* Altera para Marrom Escuro no hover */
-            color: #FCD667; /* Texto Amarelo Claro */
+            background-color: #541108;
+            color: #FCD667;
+        }
+
+        /* Botão Limpar (Abaixo do cadastrar, 50% de largura, cor amarela ouro) */
+        input[type="reset"] {
+            width: 50%;
+            padding: 11px;
+            background-color: #F3A522;
+            color: #541108;
+            margin-top: 15px; /* Espaço para ficar bem separado abaixo do botão cadastrar */
+            font-size: 0.95em;
+        }
+
+        input[type="reset"]:hover {
+            background-color: #d48a17;
+            color: #ffffff;
+        }
+
+        /* Responsividade para celulares */
+        @media (max-width: 520px) {
+            .grid-formulario {
+                grid-template-columns: 1fr;
+            }
+            .area-botoes {
+                grid-column: span 1;
+            }
+            input[type="reset"] {
+                width: 70%; /* Fica um pouco maior em telas mobile para facilitar o toque */
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="home">
-        <!-- Botão de navegação superior para a página principal -->
         <a href="principal.html" id="home">PÁGINA PRINCIPAL</a>
 
         <div class="principal">
-            <img src="IMAGEM BH SALGADOS.jpg" alt="Logo BH Salgados">
+            <img src="images.jpg" alt="Logo BH Salgados">
             <h2>Clientes</h2>
             
-            <form>
-                <label for="nome">Nome Completo:</label>
-                <input type="text" id="nome" name="nome" placeholder="Ex: João Silva">
+            <form id="formCadastro" class="grid-formulario">
                 
-                <label for="dataNascimento">Data de Nascimento:</label>
-                <input type="date" id="dataNascimento" name="dataNascimento">
+                <div class="grupo-campo">
+                    <label for="nome">Nome Completo:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Ex: João Silva">
+                </div>
                 
-                <label for="email">Email/Telefone:</label>
-                <input type="text" id="email" name="email" placeholder="Ex: João@gmail.com" required>
+                <div class="grupo-campo">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" placeholder="Ex: joao@gmail.com">
+                </div>
 
-                <label for="usuario">Nome de Usuário:</label>
-                <input type="text" id="usuario" name="usuario" placeholder="Ex: João" required>
-
-                <label for="senha">Senha:</label>
-                <input type="password" id="password" name="password" required>
+                <div class="grupo-campo">
+                    <label for="dataNascimento">Data de Nascimento:</label>
+                    <input type="date" id="dataNascimento" name="dataNascimento" placeholder="dd/mm/aaaa">
+                </div>
                 
-                <input type="button" value="CADASTRAR" onclick="cadastrar()">
+                <div class="grupo-campo">
+                    <label for="telefone">Telefone / WhatsApp:</label>
+                    <input type="text" id="telefone" name="telefone" placeholder="Ex: (31) 99999-9999">
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="usuario">Nome de Usuário:</label>
+                    <input type="text" id="usuario" name="usuario" placeholder="Ex: joao123">
+                </div>
+                
+                <div class="grupo-campo">
+                    <label for="senha">Senha:</label>
+                    <div class="campo-senha">
+                        <input type="password" id="password" name="password">
+                        <i class="fa-solid fa-eye olho-icone" id="togglePassword" onclick="alternarSenha()"></i>
+                    </div>
+                </div>
+                
+                <div class="area-botoes">
+                    <input type="button" value="CADASTRAR" onclick="cadastrar()">
+                    <input type="reset" value="LIMPAR">
+                </div>
             </form>
         </div>
     </div>
 
-    <!-- Scripts de funcionamento e máscaras mantidos originais -->
     <script>
         function cadastrar() {
+            const nome = document.getElementById('nome').value.trim();
+            const dataNasc = document.getElementById('dataNascimento').value;
+            const email = document.getElementById('email').value.trim();
+            const telefone = document.getElementById('telefone').value.trim();
+            const usuario = document.getElementById('usuario').value.trim();
+            const senha = document.getElementById('password').value.trim();
+
+            if (nome === "" || email === "" || telefone === "" || usuario === "" || senha === "") {
+                alert("Por favor, preencha todos os campos obrigatórios do cadastro!");
+                return;
+            }
+
             alert("Cadastrado com Sucesso!!!");
             window.location.href = "principal.html";
+        }
+
+        function alternarSenha() {
+            const campoSenha = document.getElementById('password');
+            const iconeOlho = document.getElementById('togglePassword');
+            
+            if (campoSenha.type === 'password') {
+                campoSenha.type = 'text';
+                iconeOlho.classList.remove('fa-eye');
+                iconeOlho.classList.add('fa-eye-slash');
+            } else {
+                campoSenha.type = 'password';
+                iconeOlho.classList.remove('fa-eye-slash');
+                iconeOlho.classList.add('fa-eye');
+            }
         }
     </script>
 
     <script src="https://unpkg.com/imask"></script>
     <script>
-        IMask(document.getElementById('cpf'), { mask: '000.000.000-00' });
+        IMask(document.getElementById('telefone'), { 
+            mask: '(00) 00000-0000' 
+        });
     </script>
 </body>
 

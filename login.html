@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário Login - BH SALGADOS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         * {
             box-sizing: border-box;
@@ -40,7 +41,7 @@
             object-fit: cover;
         }
 
-          /* Botão Página Principal no topo */
+         /* Botão Página Principal no topo */
         #home {
             display: block;
             text-align: center;
@@ -97,6 +98,34 @@
         input[type="text"]:focus,
         input[type="password"]:focus {
             border: 2px solid #C01E1A; /* Borda vermelha ao clicar no campo */
+        }
+
+        /* CONTAINER DA SENHA PARA POSICIONAR O OLHO */
+        .campo-senha {
+            position: relative;
+            width: 100%;
+        }
+
+        /* Ajuste do padding direito do input de senha para o texto não sobrepor o ícone */
+        .campo-senha input {
+            padding-right: 50px !important;
+            margin-bottom: 20px;
+        }
+
+        /* Estilização e posicionamento do ícone do olho */
+        .olho-icone {
+            position: absolute;
+            right: 20px;
+            top: 22px; /* Alinhamento vertical com base na altura do input */
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #541108;
+            font-size: 1.1em;
+            transition: color 0.2s;
+        }
+
+        .olho-icone:hover {
+            color: #C01E1A; /* Fica vermelho ao passar o mouse */
         }
         
         input[type="button"] {
@@ -157,41 +186,60 @@
 <body>
 
     <div class="home">
-        <!-- Botão de navegação superior para a página principal -->
         <a href="principal.html" id="home">PÁGINA PRINCIPAL</a>
 
-<div class="principal">
-    <img src="IMAGEM BH SALGADOS.jpg" alt="Logo BH Salgados">
-    
-    <h2>Efetuar Login</h2>
-    <p>Faça seu login aqui...</p>
+        <div class="principal">
+            <img src="images.jpg" alt="Logo BH Salgados">
+            
+            <h2>Login</h2><br>
 
-    <form>
-        <label for="login">Usuário:</label>
-        <input type="text" id="login" name="login" placeholder="Digite seu usuário">
-        
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
-        
-        <input type="button" value="LOGAR" onclick="logar()"><br>
-        
-        <input type="reset" value="LIMPAR">
-    </form>
-    
-    <a href="cadastro.html" class="cadastro-link">Clique aqui para se cadastrar...</a>
-</div>
+            <form>
+                <label for="login">Usuário:</label>
+                <input type="text" id="login" name="login" placeholder="Digite seu usuário">
+                
+                <label for="senha">Senha:</label>
+                <div class="campo-senha">
+                    <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+                    <i class="fa-solid fa-eye olho-icone" id="togglePassword" onclick="alternarSenha()"></i>
+                </div>
+                
+                <input type="button" value="LOGAR" onclick="logar()"><br>
+                
+                <input type="reset" value="LIMPAR">
+            </form>
+            
+            <a href="cadastro.html" class="cadastro-link">Clique aqui para se cadastrar...</a>
+        </div>
+    </div>
 
 <script>
     function logar() {
         let login = document.getElementById('login').value;
         let senha = document.getElementById('senha').value;
 
-        // Atualizado para validar a credencial de 2026 enviada no seu escopo
         if(login === "" && senha === ""){
             alert("Login Efetuado Com Sucesso!");
             window.location.href = "principal.html";
         } else {
             alert("Login ou senha incorretos!");
+        }
+    }
+
+    // Função JavaScript para mostrar e ocultar o texto da senha
+    function alternarSenha() {
+        const campoSenha = document.getElementById('senha');
+        const iconeOlho = document.getElementById('togglePassword');
+        
+        if (campoSenha.type === 'password') {
+            campoSenha.type = 'text';
+            // Altera o desenho para o olho com uma barra cortada
+            iconeOlho.classList.remove('fa-eye');
+            iconeOlho.classList.add('fa-eye-slash');
+        } else {
+            campoSenha.type = 'password';
+            // Volta para o desenho do olho normal
+            iconeOlho.classList.remove('fa-eye-slash');
+            iconeOlho.classList.add('fa-eye');
         }
     }
 </script>

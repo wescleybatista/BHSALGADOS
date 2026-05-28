@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras - BH SALGADOS</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #C01E1A; /* Vermelho Principal */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        img {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 15px;
+            display: block;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .container-carrinho {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* NOVO POSICIONAMENTO: Botão Voltar na parte de cima e centralizado */
+        .btn-voltar-principal {
+            display: block;
+            width: 60%;
+            margin: 0 auto 20px; /* Centralizado horizontalmente com margem abaixo */
+            padding: 12px;
+            text-align: center;
+            border-radius: 25px;
+            text-decoration: none;
+            background-color: #F3A522;; /* Marrom Escuro */
+            color: #541108; /* Texto Amarelo Claro */
+            font-size: 0.95em;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: 2px solid #F3A522; /* Borda Amarelo Ouro */
+            box-shadow: 0 4px 10px rgba(84, 17, 8, 0.2);
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        .btn-voltar-principal:hover {
+            background-color: #C01E1A; /* Inverte para Vermelho no Hover */
+            color: #ffffff; /* Texto Branco */
+            transform: scale(1.02);
+        }
+
+        /* Botões Superiores de Navegação */
+        .botoes-topo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn-nav {
+            text-align: center;
+            padding: 12px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.95em;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+            box-shadow: 0 4px 10px rgba(84, 17, 8, 0.2);
+        }
+
+        .btn-voltar {
+            background-color:#541108; /* Amarelo Ouro */
+            color: #ffffff;
+        }
+
+        .btn-voltar:hover {
+            background-color: #541108;
+            color: #FCD667;
+        }
+
+        .btn-limpar-tudo {
+            background-color: #541108; /* Marrom Escuro */
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .btn-limpar-tudo:hover {
+            background-color: #b12724;
+            color: #ffffff;
+        }
+
+        /* Card do Carrinho */
+        .card-principal {
+            padding: 30px 25px;
+            background-color: #FCD667; /* Fundo Amarelo Claro */
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(84, 17, 8, 0.3);
+            border: 2px solid #F3A522;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #C01E1A;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        /* Tabela/Lista de Itens */
+        .lista-itens {
+            margin-bottom: 25px;
+            max-height: 400px;
+            overflow-y: auto; /* Adiciona rolagem se houver muitos itens */
+            padding-right: 5px;
+        }
+
+        .item-carrinho {
+            display: grid;
+            grid-template-columns: 1fr auto auto auto;
+            gap: 15px;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 12px 15px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #F3A522;
+        }
+
+        .item-nome {
+            font-size: 0.95em;
+            color: #541108;
+            font-weight: bold;
+        }
+
+        .item-qtd {
+            font-size: 0.9em;
+            color: #777;
+            background: #f4f4f4;
+            padding: 4px 10px;
+            border-radius: 15px;
+        }
+
+        .item-preco {
+            font-weight: bold;
+            color: #C01E1A;
+        }
+
+        .btn-remover {
+            background: none;
+            border: none;
+            color: #C01E1A;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.1em;
+            padding: 0 5px;
+        }
+
+        .btn-remover:hover {
+            color: #541108;
+        }
+
+        /* Mensagem de carrinho vazio */
+        .carrinho-vazio {
+            text-align: center;
+            color: #541108;
+            font-style: italic;
+            padding: 30px 0;
+        }
+
+        /* Seção do Total */
+        .container-total {
+            border-top: 2px dashed #F3A522;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .total-label {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #541108;
+        }
+
+        .total-valor {
+            font-size: 1.6em;
+            font-weight: bold;
+            color: #C01E1A;
+        }
+
+        /* Botão Finalizar */
+        .btn-finalizar {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            background-color: #541108;
+            color: #ffffff;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(84, 17, 8, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        .btn-finalizar:hover {
+            background-color: #C01E1A;
+        }
+
+        /* Responsividade */
+        @media (max-width: 500px) {
+            .item-carrinho {
+                grid-template-columns: 1fr auto;
+                gap: 5px;
+            }
+            .item-qtd, .item-preco {
+                grid-column: span 1;
+            }
+            .btn-voltar-principal {
+                width: 90%; /* Ocupa quase toda a largura no celular */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-carrinho">
+        <!-- Logo centralizada -->
+        <img src="images.jpg" alt="Logo BH Salgados">
+
+        <!-- Botão Voltar agora posicionado na parte superior -->
+        <a href="principal.html" class="btn-voltar-principal">Voltar à Página Principal</a>
+
+        <div class="botoes-topo">
+            <a href="produtos.html" class="btn-nav btn-voltar">＋ ADICIONAR MAIS</a>
+            <button class="btn-nav btn-limpar-tudo" onclick="limparCarrinho()">Esvaziar Carrinho</button>
+        </div>
+
+        <div class="card-principal">
+            <h2>Meu Carrinho</h2>
+            
+            <div class="lista-itens" id="espaco-itens">
+                <!-- Os itens salvos vão aparecer aqui dentro via Javascript -->
+            </div>
+
+            <div class="container-total">
+                <span class="total-label">TOTAL DO PEDIDO:</span>
+                <span class="total-valor" id="valor-total">R$ 0,00</span>
+            </div>
+
+            <button class="btn-finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
+        </div>
+    </div>
+
+    <script>
+        // Função que carrega os dados salvos do localStorage e monta o HTML na tela
+        function carregarCarrinho() {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho_bh')) || [];
+            let espacoItens = document.getElementById('espaco-itens');
+            let espacoTotal = document.getElementById('valor-total');
+            
+            espacoItens.innerHTML = ''; // Limpa a tela para recarregar
+            let totalGeral = 0;
+
+            if (carrinho.length === 0) {
+                espacoItens.innerHTML = '<div class="carrinho-vazio">Seu carrinho está vazio no momento.</div>';
+                espacoTotal.innerText = 'R$ 0,00';
+                return;
+            }
+
+            carrinho.forEach((item, index) => {
+                let subtotal = item.preco * item.qtd;
+                totalGeral += subtotal;
+
+                // Monta a estrutura de linha para cada item adicionado
+                espacoItens.innerHTML += `
+                    <div class="item-carrinho">
+                        <div class="item-nome">${item.nome}</div>
+                        <div class="item-qtd">${item.qtd}x</div>
+                        <div class="item-preco">R$ ${subtotal.toFixed(2).replace('.', ',')}</div>
+                        <button class="btn-remover" onclick="removerItem(${index})" title="Remover item">✕</button>
+                    </div>
+                `;
+            });
+
+            espacoTotal.innerText = `R$ ${totalGeral.toFixed(2).replace('.', ',')}`;
+        }
+
+        // Remove apenas um item clicado com base na sua posição (index)
+        function removerItem(index) {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho_bh')) || [];
+            carrinho.splice(index, 1); // Remove o item do array
+            localStorage.setItem('carrinho_bh', JSON.stringify(carrinho)); // Salva o array atualizado
+            carregarCarrinho(); // Atualiza o visual da página
+        }
+
+        // Limpa todos os registros do carrinho de uma vez só
+        function limparCarrinho() {
+            if(confirm("Tem certeza que deseja esvaziar o carrinho?")) {
+                localStorage.removeItem('carrinho_bh');
+                carregarCarrinho();
+            }
+        }
+
+        // Ação fictícia de finalização de pedido
+        function finalizarPedido() {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho_bh')) || [];
+            if(carrinho.length === 0) {
+                alert("Adicione produtos antes de finalizar!");
+                return;
+            }
+            alert("Pedido finalizado com sucesso! Obrigado por comprar na BH Salgados.");
+            localStorage.removeItem('carrinho_bh'); // Limpa após o envio
+            carregarCarrinho();
+        }
+
+        // Executa a função automaticamente assim que a página abre
+        window.onload = carregarCarrinho;
+    </script>
+</body>
+
+</html>

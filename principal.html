@@ -70,6 +70,7 @@
             list-style: none;
             display: flex;
             justify-content: center;
+            align-items: center; /* Alinha os itens verticalmente ao centro */
             flex-wrap: wrap;
         }
 
@@ -89,6 +90,21 @@
         .menu a:hover {
             background-color: #C01E1A; /* Fundo Vermelho no Hover */
             color: #FCD667; /* Texto Amarelo Claro no Hover */
+        }
+
+        /* AJUSTE: Link do Carrinho no menu com a MESMA COR do botão flutuante */
+        .menu a.menu-carrinho {
+            background-color: #541108; /* Marrom Escuro */
+            color: #FCD667; /* Texto Amarelo Claro */
+            border: 2px solid #F3A522; /* Borda Amarelo Ouro */
+            border-radius: 25px; /* Deixa o botão arredondado */
+            padding: 10px 20px; /* Ajusta o espaçamento interno para combinar com o formato de botão */
+            margin-left: 10px; /* Separa levemente dos outros links */
+        }
+        
+        .menu a.menu-carrinho:hover {
+            background-color: #C01E1A; /* Vermelho Principal no Hover */
+            color: #ffffff; /* Texto Branco no Hover */
         }
 
         .conteudo {
@@ -134,6 +150,45 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(192, 30, 26, 0.4);
         }
+
+        /* BOTÃO FLUTUANTE DO CARRINHO (Canto Inferior Direito) */
+        .carrinho-flutuante {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #541108; /* Marrom Escuro */
+            color: #FCD667; /* Texto Amarelo Claro */
+            text-decoration: none;
+            padding: 15px 22px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            border: 2px solid #F3A522; /* Borda Amarelo Ouro */
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .carrinho-flutuante:hover {
+            transform: scale(1.08);
+            background-color: #C01E1A; /* Muda para Vermelho no hover */
+            color: #ffffff;
+        }
+
+        .icone-carrinho {
+            font-size: 1.2rem;
+        }
+
+        /* Ajuste de responsividade para o menu mobile */
+        @media (max-width: 768px) {
+            .menu a.menu-carrinho {
+                margin-left: 0;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+        }
     </style>
 </head>
 
@@ -141,7 +196,7 @@
     <header class="topo">
         <div class="container">
             <div class="banner">
-                <img src="IMAGEM BH SALGADOS.jpg" alt="Logo BH Salgados">
+                <img src="images.jpg" alt="Logo BH Salgados">
     
                 <p>SABOR & TRADIÇÃO</p>
                 <h1>BH SALGADOS</h1>
@@ -150,10 +205,11 @@
         <nav class="menu">
             <div class="container">
                 <ul>
-                    <li><a href="login.html">login</a></li>
+                    <li><a href="login.html">Login</a></li>
                     <li><a href="cadastro.html">Cadastro</a></li>
                     <li><a href="produtos.html">Produtos</a></li>
                     <li><a href="dicasInformações.html">Dicas e Informações</a></li>
+                    <li><a href="carrinho.html" class="menu-carrinho">🛒 Meu Carrinho</a></li>
                 </ul>
             </div>
         </nav>
@@ -169,6 +225,7 @@
             </section>
         </div>
     </main>
+
 </body>
 
 </html>
