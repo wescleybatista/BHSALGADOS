@@ -1,0 +1,650 @@
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E RESET (Unificado)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #FCD667; /* Amarelo Claro Oficial */
+    color: #541108;            /* Marrom Escuro para melhor leitura */
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Ajuste específico para que a página principal flua verticalmente */
+body.pagina-inicial {
+    display: block;
+    min-height: 100vh;
+    padding: 0;
+}
+
+/* Títulos Padronizados */
+h2 {
+    font-size: 2rem;
+    color: #C01E1A;            /* Título em Vermelho Principal */
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Imagens de Perfil/Logo circulares */
+img, .cadastro-img, .logo-topo {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 20px;
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #F3A522; /* Destaque na foto com Amarelo Ouro */
+}
+
+
+/* ==========================================================================
+   2. CONTAINERS, CARDS E GRIDS ESTRUTURAIS
+   ========================================================================== */
+.container, .container-carrinho {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Layout flexível para centralizar caixas como login e produtos */
+.home, .login-wrapper {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.home {
+    max-width: 1100px; /* Layout expandido para a tela de produtos grid */
+}
+
+/* Cards com fundo branco de destaque */
+.principal, .card-principal, .destaque {
+    background-color: #ffffff;
+    padding: 35px 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(84, 17, 8, 0.15);
+    border: 1px solid rgba(243, 165, 34, 0.3); /* Borda suave em Amarelo Ouro */
+}
+
+/* Divisão em duas colunas (Usado no Cadastro e nos Produtos) */
+.grid-formulario, .formulario {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.grid-formulario {
+    gap: 15px; /* Ajuste mais compacto para formulário de cadastro */
+}
+
+.grad1, .grad2, .grupo-campo {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ==========================================================================
+   3. PADRONIZAÇÃO DE BOTÕES E LINKS DE NAVEGAÇÃO (AJUSTADO)
+   ========================================================================== */
+/* Botões de Navegação Superiores (Voltar, Home) */
+#home, #btn-home, .btn-voltar-principal {
+    display: inline-block;
+    align-self: center;        /* Centraliza o botão no container flex */
+    text-align: center;
+    padding: 10px 24px;        /* Padding idêntico ao do Meu Carrinho */
+    margin-bottom: 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    background-color: #541108; /* Marrom Escuro padrão */
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #FCD667;            /* Texto Amarelo Claro */
+    border: 2px solid #F3A522; /* Borda Amarelo Ouro */
+    box-shadow: 0 4px 10px rgba(84, 17, 8, 0.2);
+    text-transform: uppercase;
+    min-width: 180px;          /* Garante um tamanho mínimo elegante */
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+#home:hover, #btn-home:hover, .btn-voltar-principal:hover {
+    background-color: #C01E1A; /* Inverte para Vermelho Principal no Hover */
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Botões de Ação Principal (Logar, Cadastrar, Salvar Compras) */
+.botao, input[type="button"], .btn-finalizar {
+    display: inline-block;
+    align-self: center;        /* Impede que o botão estique 100% se estiver em Flex */
+    width: auto;               /* Remove o esticamento automático */
+    min-width: 180px;          /* Tamanho mínimo para manter o padrão do carrinho */
+    padding: 10px 24px;        /* Altura e proporção baseada no formato de pílula */
+    background-color: #C01E1A; /* Vermelho Principal */
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    font-size: 0.95rem;        /* Fonte ligeiramente menor para harmonizar */
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(192, 30, 26, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+.botao:hover, input[type="button"]:hover, .btn-finalizar:hover {
+    background-color: #A01613; /* Tom ligeiramente mais escuro */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(192, 30, 26, 0.4);
+}
+
+/* Botões Secundários de Limpeza (Amarelo Ouro) */
+input[type="reset"], .btn-voltar {
+    background-color: #F3A522; /* Amarelo Ouro */
+    color: #541108;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 10px 24px;        /* Proporção similar aos demais */
+    min-width: 150px;
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s;
+}
+
+input[type="reset"] {
+    margin-top: 15px; 
+    font-size: 0.9rem;
+}
+
+input[type="reset"]:hover {
+    background-color: #541108; /* Inverte para Marrom Escuro */
+    color: #FCD667;            /* Texto Amarelo Claro */
+}
+
+/* Links adicionais (ex: "Clique aqui para se cadastrar") */
+.cadastro-link {
+    display: inline-block;
+    margin-top: 25px;
+    color: #C01E1A;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.cadastro-link:hover {
+    color: #541108;
+    text-decoration: underline;
+}
+
+
+/* ==========================================================================
+   4. ELEMENTOS DA PÁGINA HOME / BANNER / MENU
+   ========================================================================== */
+.topo { 
+    box-shadow: 0 4px 10px rgba(84, 17, 8, 0.15); 
+}
+
+.banner {
+    background: linear-gradient(135deg, #C01E1A, #F3A522);
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+    border-radius: 0 0 10px 10px;
+}
+
+.banner h1 {
+    font-size: 2.7rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(84, 17, 8, 0.5);
+}
+
+.banner p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    opacity: 0.95;
+}
+
+.conteudo {
+    padding: 40px 0;
+}
+
+.destaque p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 25px;
+    color: #541108;
+}
+
+/* Menu de Navegação Horizontal */
+.menu {
+    background-color: #ffffff;
+    border-bottom: 3px solid #C01E1A;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.menu a {
+    display: block;
+    padding: 18px 22px;
+    text-decoration: none;
+    color: #C01E1A;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu a:hover {
+    background-color: #C01E1A;
+    color: #FCD667;
+}
+
+/* Link Especial do Carrinho no Menu */
+.menu a.menu-carrinho, .carrinho-flutuante {
+    background-color: #541108; /* Marrom Escuro */
+    color: #FCD667;            /* Texto Amarelo Claro */
+    border: 2px solid #F3A522; /* Borda Amarelo Ouro */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu a.menu-carrinho {
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin-left: 10px;
+}
+
+.menu a.menu-carrinho:hover {
+    background-color: #C01E1A;
+    color: #ffffff;
+}
+
+
+/* ==========================================================================
+   5. COMPONENTES DE FORMULÁRIO (Inputs e Seletores)
+   ========================================================================== */
+label {
+    display: block;
+    font-size: 1rem;
+    color: #541108;
+    margin-bottom: 6px;
+    margin-left: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.formulario label {
+    font-size: 13px;
+    margin-left: 5px;
+    text-transform: uppercase;
+}
+
+/* Inputs, Selects e Caixas de Texto Padronizados */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    border: 1px solid #F3A522; /* Borda em Amarelo Ouro */
+    background-color: #ffffff;
+    font-size: 1rem;
+    color: #541108;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+select {
+    font-size: 0.9em;
+    padding: 12px 15px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border: 2px solid #C01E1A; /* Destaque em Vermelho no clique */
+    box-shadow: 0 0 8px rgba(192, 30, 26, 0.2);
+}
+
+/* Estrutura de Linha de Produto (Select + Quantidade ao lado) */
+.linha-produto {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* BLOCO COMPACTO DE CONTROLE DE QUANTIDADE */
+.controle-quantidade {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: rgba(84, 17, 8, 0.05);
+    padding: 3px;
+    border-radius: 25px;
+    border: 1px solid #F3A522;
+}
+
+.input-qtd {
+    width: 40px !important;
+    padding: 5px 0 !important;
+    margin-bottom: 0 !important;
+    text-align: center;
+    font-weight: bold;
+    border: none !important;
+    background: transparent !important;
+}
+
+.btn-qtd {
+    border: none;
+    border-radius: 50%;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+}
+
+.btn-menos, .btn-mais {
+    background-color: #541108;
+    color: #FCD667;
+}
+
+.btn-menos:hover, .btn-mais:hover {
+    background-color: #F3A522;
+    color: #541108;
+}
+
+.btn-qtd:active {
+    transform: scale(0.9);
+}
+
+/* Campo especial de Senha com Ícone de Olho */
+.campo-senha {
+    position: relative;
+    width: 100%;
+}
+
+.campo-senha input {
+    padding-right: 50px !important;
+}
+
+.olho-icone {
+    position: absolute;
+    right: 20px;
+    top: 22px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #541108;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+.olho-icone:hover { 
+    color: #C01E1A; 
+}
+
+#dataNascimento { 
+    font-family: Arial, Helvetica, sans-serif; 
+}
+
+/* Áreas inferiores para botões de submissão dupla */
+.area-botoes, .container-botoes-acao {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.container-botoes-acao input[type="reset"] {
+    width: auto;
+}
+
+
+/* ==========================================================================
+   6. COMPONENTES DO CARRINHO (Lista e Itens)
+   ========================================================================== */
+.botoes-topo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.btn-nav {
+    text-align: center;
+    padding: 12px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 0.95em;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(84, 17, 8, 0.15);
+}
+
+.btn-voltar {
+    border: 1px solid #541108;
+    width: 100%;
+}
+
+.btn-voltar:hover {
+    background-color: #541108;
+    color: #FCD667;
+    transform: translateY(-2px);
+}
+
+.btn-limpar-tudo {
+    background-color: #541108;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.btn-limpar-tudo:hover {
+    background-color: #C01E1A; /* Alerta Vermelho */
+    transform: translateY(-2px);
+}
+
+/* Itens da Listagem */
+.lista-itens {
+    margin-bottom: 25px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.item-carrinho {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: 15px;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 14px 20px;
+    border-radius: 25px;
+    margin-bottom: 12px;
+    border: 1px solid #F3A522;
+    transition: transform 0.2s;
+}
+
+.item-carrinho:hover { 
+    box-shadow: 0 4px 8px rgba(84, 17, 8, 0.08); 
+}
+
+.item-nome { 
+    font-size: 1em; 
+    color: #541108; 
+    font-weight: bold; 
+}
+
+.item-qtd {
+    font-size: 0.9em;
+    color: #541108;
+    background: #FCD667; /* Badge Amarelo */
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.item-preco { 
+    font-weight: bold; 
+    color: #C01E1A; 
+}
+
+.btn-remover {
+    background: none;
+    border: none;
+    color: #C01E1A;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.1em;
+    padding: 0 5px;
+    transition: color 0.2s;
+}
+
+.btn-remover:hover { 
+    color: #541108; 
+}
+
+.carrinho-vazio { 
+    text-align: center; 
+    color: #541108; 
+    font-style: italic; 
+    padding: 40px 0; 
+    font-size: 1.1em; 
+}
+
+/* Bloco de Totais */
+.container-total {
+    border-top: 2px dashed #F3A522;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.total-label { 
+    font-size: 1.2em; 
+    font-weight: bold; 
+    color: #541108; 
+}
+
+.total-valor { 
+    font-size: 1.7em; 
+    font-weight: bold; 
+    color: #C01E1A; 
+}
+
+
+/* ==========================================================================
+   7. BOTÃO FLUTUANTE (Fixo na tela)
+   ========================================================================== */
+.carrinho-flutuante {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    padding: 15px 22px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.carrinho-flutuante:hover {
+    transform: scale(1.08);
+    background-color: #C01E1A;
+    color: #ffffff;
+}
+
+.icone-carrinho { 
+    font-size: 1.2rem; 
+}
+
+
+/* ==========================================================================
+   8. MEDIA QUERIES (Responsividade Centralizada)
+   ========================================================================== */
+@media (max-width: 850px) {
+    .formulario {
+        grid-template-columns: 1fr;
+    }
+    .container-botoes-acao {
+        grid-column: span 1;
+    }
+    .linha-produto {
+        grid-template-columns: 1fr auto;
+    }
+    .container-botoes-acao input[type="reset"] {
+        width: 70%; 
+    }
+}
+
+@media (max-width: 768px) {
+    .menu a.menu-carrinho {
+        margin-left: 0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .grid-formulario {
+        grid-template-columns: 1fr;
+    }
+    .area-botoes {
+        grid-column: span 1;
+    }
+    input[type="reset"] {
+        width: 70%; 
+    }
+    #home, #btn-home, .btn-voltar-principal, .botao, input[type="button"], .btn-finalizar {
+        width: 80%; /* Em telas mobile eles expandem um pouco mais para facilitar o toque */
+    }
+}
+
+@media (max-width: 500px) {
+    .item-carrinho {
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+        border-radius: 15px;
+    }
+    .item-qtd, .item-preco {
+        grid-column: span 1;
+    }
+    .btn-voltar-principal {
+        width: 90%;
+    }
+}

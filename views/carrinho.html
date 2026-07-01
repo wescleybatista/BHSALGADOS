@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras - BH SALGADOS</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container-carrinho">
+        <!-- Logo centralizada -->
+        <img src="/salgados.jpg" alt="Logo BH Salgados">
+
+        <!-- Botão Voltar posicionado na parte superior -->
+        <a href="principal.html" class="btn-voltar-principal">Voltar à Página Principal</a>
+
+        <div class="botoes-topo">
+            <a href="produtos.html" class="btn-nav btn-voltar">＋ ADICIONAR MAIS</a>
+            <button class="btn-nav btn-limpar-tudo" onclick="limparCarrinho()">Esvaziar Carrinho</button>
+        </div>
+
+        <div class="card-principal">
+            <h2>Meu Carrinho</h2>
+            
+            <div class="lista-itens" id="espaco-itens">
+                <!-- Os itens salvos vão aparecer aqui dentro via Javascript -->
+            </div>
+
+            <div class="container-total">
+                <span class="total-label">TOTAL DO PEDIDO:</span>
+                <span class="total-valor" id="valor-total">R$ 0,00</span>
+            </div>
+
+            <button class="btn-finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
+        </div>
+    </div>
+
+    <script>
+        // Função que carrega os dados salvos do localStorage e monta o HTML na tela
+        function carregarCarrinho() {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho_bh')) || [];
+            let espacoItens = document.getElementById('espaco-itens');
+            let espacoTotal = document.getElementById('valor-total');
+            
+            espacoItens.innerHTML = ''; // Limpa a tela para recarregar
+            let totalGeral = 0;
+
+            if (carrinho.length === 0) {
+                espacoItens.innerHTML = '<div class="carrinho-vazio">Seu carrinho está vazio no momento.</div>';
+                espacoTotal.innerText = 'R$ 0,00';
+                return;
+            }
+
+            carrinho.forEach((item, index) => {
+                let subtotal = item.preco * item.qtd;
+                totalGeral += subtotal;
+
+                // Monta a estrutura de linha para cada item adicionado
+                espacoItens.innerHTML += `
+                    <div class="item-carrinho">
+                        <div class="item-nome">${item.nome}</div>
+                        <div class="item-qtd">${item.qtd}x</div>
+                        <div class="item-preco">R$ ${subtotal.toFixed(2).replace('.', ',')}</div>
+                        <button class="btn-remover" onclick="removerItem(${index})" title="Remover item">✕</button>
+                    </div>
+                `;
+            });
+
+            espacoTotal.innerText = `R$ ${totalGeral.toFixed(2).replace('.', ',')}`;
+        }
+
+        // Remove apenas um item clicado com base na sua posição (index)
+        function removerItem(index) {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho_bh')) || [];
+            carrinho.splice(index, 1); // Remove o item do array
+            localStorage.setItem('carrinho_bh', JSON.stringify(carrinho)); // Salva o array atualizado
+            carregarCarrinho(); // Atualiza o visual da página
+        }
+
+        // Limpa todos os registros do carrinho de uma vez só
+        function limparCarrinho() {
+            if(confirm("Tem certeza que deseja esvaziar o carrinho?")) {
+                localStorage.removeItem('carrinho_bh');
+                carregarCarrinho();
+            }
+        }
+
+        // Ação fictícia de finalização de pedido
+        function finalizarPedido() {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho_bh')) || [];
+            if(carrinho.length === 0) {
+                alert("Adicione produtos antes de finalizar!");
+                return;
+            }
+            alert("Pedido finalizado com sucesso! Obrigado por comprar na BH Salgados.");
+            localStorage.removeItem('carrinho_bh'); // Limpa após o envio
+            carregarCarrinho();
+        }
+
+        // Executa a função automaticamente assim que a página abre
+        window.onload = carregarCarrinho;
+    </script>
+</body>
+
+</html>

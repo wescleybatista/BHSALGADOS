@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatos - BH SALGADOS</title>
+    <style>
+        /* CSS Unificado e Adaptado para a Identidade Visual */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #FCD667; /* Amarelo Claro Oficial no fundo da tela */
+            color: #541108; /* Marrom Escuro para textos */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container-contatos {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Botão Página Principal estilizado e centralizado */
+        .btn-voltar-principal {
+            display: block;
+            width: 60%;
+            margin: 0 auto 20px;
+            padding: 12px;
+            text-align: center;
+            border-radius: 25px;
+            text-decoration: none;
+            background-color: #541108; /* Marrom Escuro padrão */
+            color: #FCD667; /* Texto Amarelo Claro */
+            font-size: 0.95em;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: 2px solid #F3A522; /* Borda Amarelo Ouro */
+            box-shadow: 0 4px 10px rgba(84, 17, 8, 0.2);
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        .btn-voltar-principal:hover {
+            background-color: #C01E1A; /* Inverte para Vermelho Principal */
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Card Principal da Página */
+        .principal {
+            padding: 35px 25px;
+            background-color: #ffffff; /* Fundo Branco para dar destaque e leveza */
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(84, 17, 8, 0.15);
+            border: 1px solid rgba(243, 165, 34, 0.3); /* Borda suave em Amarelo Ouro */
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 26px;
+            color: #C01E1A; /* Título principal em Vermelho */
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-size: 20px;
+            color: #541108; /* Subtítulo em Marrom Escuro */
+            margin: 30px 0 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Container para os Iframes organizados */
+        .midia-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
+            width: 100%;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 800px;
+            border: 2px solid #F3A522; /* Moldura em Amarelo Ouro nos iframes */
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(84, 17, 8, 0.08);
+        }
+
+        .mapa-iframe {
+            height: 350px;
+        }
+
+        .instagram-iframe {
+            max-width: 400px;
+            height: 480px;
+        }
+
+        /* Grade de Redes Sociais no final */
+        .redes-sociais {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Botões de Redes Sociais Padronizados */
+        .btn-social {
+            display: block;
+            padding: 12px;
+            text-align: center;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.95em;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #541108;
+            background-color: #FCD667; /* Amarelo Claro Oficial */
+            border: 1px solid #F3A522;
+            box-shadow: 0 4px 8px rgba(84, 17, 8, 0.08);
+            transition: background-color 0.3s, color 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+
+        .btn-social:hover {
+            background-color: #C01E1A; /* Transição para o Vermelho Principal */
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(192, 30, 26, 0.2);
+        }
+
+        /* Responsividade para celulares */
+        @media (max-width: 600px) {
+            .mapa-iframe { height: 250px; }
+            .instagram-iframe { width: 100%; height: 440px; }
+            .btn-voltar-principal { width: 90%; }
+            h2 { font-size: 22px; }
+            h3 { font-size: 18px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-contatos">
+        <!-- Botão Voltar unificado na parte superior externa -->
+        <a href="principal.html" class="btn-voltar-principal">Voltar à Página Principal</a>
+
+        <div class="principal">
+            <h2>Nossa Localização e Mídias</h2>
+            
+            <div class="midia-container">
+                <!-- Mapa de Localização -->
+                <iframe
+                    class="mapa-iframe"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4463.257675860609!2d-43.3695!3d-22.807!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x996461be567a9f%3A0x2c1de652e585da85!2sR.%20Maria%20Joaquina%2C%20279%20-%20Pavuna%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2021520-280!5e1!3m2!1spt-BR!2sbr" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+
+                <!-- Reels / Vídeo Incorporado do Instagram -->
+                <iframe 
+                    class="instagram-iframe"
+                    src="https://www.instagram.com/reel/DGYKBUcRJdC/embed"
+                    frameborder="0"
+                    scrolling="no"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <h3>Conecte-se Comigo</h3>
+            
+            <!-- Grupo de Links de Redes Sociais Padronizados -->
+            <div class="redes-sociais">
+                <a href="https://www.instagram.com/bhsalgadoss/" target="_blank" rel="noopener noreferrer" class="btn-social">
+                    Instagram
+                </a>
+                <a href="https://wa.me/5521975187209" target="_blank" rel="noopener noreferrer" class="btn-social">
+                    WhatsApp
+                </a>
+                <a href="https://www.facebook.com/bhsalgadoss/?locale=pt_BR" target="_blank" rel="noopener noreferrer" class="btn-social">
+                    Facebook
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

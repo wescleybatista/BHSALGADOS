@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Formulário Login - BH SALGADOS</title>
+    
+    
+</head>
+<body>
+
+    <div class="login-wrapper">
+        <a href="principal.html" id="home">PÁGINA PRINCIPAL</a>
+
+        <div class="principal">
+            <img src="/salgados.jpg" alt="Logo BH Salgados">
+            
+            <h2>Login</h2>
+
+            <form>
+                <label for="login">Usuário:</label>
+                <input type="text" id="login" name="login" placeholder="Digite seu usuário">
+                
+                <label for="senha">Senha:</label>
+                <div class="campo-senha">
+                    <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+                    <i class="fa-solid fa-eye olho-icone" id="togglePassword" onclick="alternarSenha()"></i>
+                </div>
+                
+                <input type="button" value="LOGAR" onclick="logar()"><br>
+                
+                <input type="reset" value="LIMPAR">
+            </form>
+            
+            <a href="cadastro.html" class="cadastro-link">Clique aqui para se cadastrar...</a>
+        </div>
+    </div>
+
+<script>
+    function logar() {
+        let login = document.getElementById('login').value;
+        let senha = document.getElementById('senha').value;
+
+        if(login === "" && senha === ""){
+            alert("Login Efetuado Com Sucesso!");
+            window.location.href = "principal.html";
+        } else {
+            alert("Login ou senha incorretos!");
+        }
+    }
+
+    // Função JavaScript para mostrar e ocultar o texto da senha
+    function alternarSenha() {
+        const campoSenha = document.getElementById('senha');
+        const iconeOlho = document.getElementById('togglePassword');
+        
+        if (campoSenha.type === 'password') {
+            campoSenha.type = 'text';
+            iconeOlho.classList.remove('fa-eye');
+            iconeOlho.classList.add('fa-eye-slash');
+        } else {
+            campoSenha.type = 'password';
+            iconeOlho.classList.remove('fa-eye-slash');
+            iconeOlho.classList.add('fa-eye');
+        }
+    }
+</script>
+    
+</body>
+</html>

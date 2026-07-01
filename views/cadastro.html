@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Clientes - BH SALGADOS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/views/css/style.css">
+</head>
+
+<body>
+    <div class="home">
+        <a href="principal.html" id="home">PÁGINA PRINCIPAL</a>
+
+        <div class="principal">
+            <img src="/salgados.jpg" alt="Logo BH Salgados" class="cadastro-img">
+            <h2>Clientes</h2>
+            
+            <form id="formCadastro" class="grid-formulario">
+                
+                <div class="grupo-campo">
+                    <label for="nome">Nome Completo:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Ex: João Silva">
+                </div>
+                
+                <div class="grupo-campo">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" placeholder="Ex: joao@gmail.com">
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="dataNascimento">Data de Nascimento:</label>
+                    <input type="date" id="dataNascimento" name="dataNascimento" placeholder="dd/mm/aaaa">
+                </div>
+                
+                <div class="grupo-campo">
+                    <label for="telefone">Telefone / WhatsApp:</label>
+                    <input type="text" id="telefone" name="telefone" placeholder="Ex: (31) 99999-9999">
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="usuario">Nome de Usuário:</label>
+                    <input type="text" id="usuario" name="usuario" placeholder="Ex: joao123">
+                </div>
+                
+                <div class="grupo-campo">
+                    <label for="senha">Senha:</label>
+                    <div class="campo-senha">
+                        <input type="password" id="password" name="password">
+                        <i class="fa-solid fa-eye olho-icone" id="togglePassword" onclick="alternarSenha()"></i>
+                    </div>
+                </div>
+                
+                <div class="area-botoes">
+                    <input type="button" value="CADASTRAR" onclick="cadastrar()">
+                    <input type="reset" value="LIMPAR">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function cadastrar() {
+            const nome = document.getElementById('nome').value.trim();
+            const dataNasc = document.getElementById('dataNascimento').value;
+            const email = document.getElementById('email').value.trim();
+            const telefone = document.getElementById('telefone').value.trim();
+            const usuario = document.getElementById('usuario').value.trim();
+            const senha = document.getElementById('password').value.trim();
+
+            if (nome === "" || email === "" || telefone === "" || usuario === "" || senha === "") {
+                alert("Por favor, preencha todos os campos obrigatórios do cadastro!");
+                return;
+            }
+
+            alert("Cadastrado com Sucesso!!!");
+            window.location.href = "principal.html";
+        }
+
+        function alternarSenha() {
+            const campoSenha = document.getElementById('password');
+            const iconeOlho = document.getElementById('togglePassword');
+            
+            if (campoSenha.type === 'password') {
+                campoSenha.type = 'text';
+                iconeOlho.classList.remove('fa-eye');
+                iconeOlho.classList.add('fa-eye-slash');
+            } else {
+                campoSenha.type = 'password';
+                iconeOlho.classList.remove('fa-eye-slash');
+                iconeOlho.classList.add('fa-eye');
+            }
+        }
+    </script>
+
+    <script src="https://unpkg.com/imask"></script>
+    <script>
+        IMask(document.getElementById('telefone'), { 
+            mask: '(00) 00000-0000' 
+        });
+    </script>
+</body>
+
+</html>
